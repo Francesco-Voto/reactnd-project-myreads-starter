@@ -5,7 +5,8 @@ import './App.css'
 const Book = (props) => {
 
   const { updateBook, book: { imageLinks: { thumbnail }, title, authors, shelf }} = props;
- 
+
+  console.log(props);
   return(
     <div className="book">
       <div className="book-top">
@@ -22,7 +23,7 @@ const Book = (props) => {
         </div>
       </div>
       <div className="book-title">{title}</div>
-      {authors.map((author) => (
+      {authors && authors.map((author) => (
         <div key={author} className="book-authors">
           {author}
         </div>
@@ -30,7 +31,7 @@ const Book = (props) => {
 
     </div>
   );
-}
+};
 
 Book.propTypes = {
   updateBook: PropTypes.func.isRequired,
