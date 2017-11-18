@@ -4,13 +4,15 @@ import './App.css'
 
 const Book = (props) => {
 
-  const { updateBook, book: { imageLinks: { thumbnail }, title, authors, shelf }} = props;
+  const { updateBook, book: { imageLinks, title, authors, shelf }} = props;
   
   return(
     <div className="book">
       <div className="book-top">
         <div className="book-cover"
-             style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }} />
+             style={{ width: 128, height: 193,
+               backgroundImage: `url(${imageLinks ? imageLinks.thumbnail :
+               "http://via.placeholder.com/128x193?text=No%20Cover"})` }} />
         <div className="book-shelf-changer">
           <select value={shelf || 'none'} onChange={(event) => updateBook(event.target.value)}>
             <option value="none" disabled>Move to...</option>
