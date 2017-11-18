@@ -5,7 +5,6 @@ import './App.css'
 const Book = (props) => {
 
   const { updateBook, book: { imageLinks, title, authors, shelf }} = props;
-  
   return(
     <div className="book">
       <div className="book-top">
@@ -41,7 +40,7 @@ Book.propTypes = {
       thumbnail: PropTypes.string,
     }),
     title: PropTypes.string,
-    shelf:PropTypes.oneOf(['currentlyReading', 'wantToRead', 'read']),
+    shelf:PropTypes.oneOf(['currentlyReading', 'wantToRead', 'read', 'none']),
     authors: PropTypes.arrayOf(PropTypes.string)
   }).isRequired
 };

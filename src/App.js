@@ -8,8 +8,7 @@ import './App.css'
 class BooksApp extends Component {
 
   state = {
-    books: [],
-    queriedBooks: []
+    books: []
   };
 
   componentDidMount() {
@@ -26,15 +25,6 @@ class BooksApp extends Component {
     }))
   };
 
-  updateQuery = (query) => {
-    BooksAPI.search(query, 30)
-      .then((books) => {
-        this.setState({queriedBooks: books && books.error ? [] : books});
-      
-      })
-      .catch((error) => this.setState({ queriedBooks: [] }));
-  };
-
   render(){
     return (
       <div className="app">
@@ -46,10 +36,8 @@ class BooksApp extends Component {
         )}/>
         <Route path='/search' render={({history}) => (
           <SearchPage
-            books={ this.state.queriedBooks }
             updateBook={this.updateBook}
-            updateQuery={this.updateQuery}
-          />
+            books={this.state.books}/>
         )}/>
       </div>
     );
