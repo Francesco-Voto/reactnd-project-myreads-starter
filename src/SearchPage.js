@@ -53,7 +53,7 @@ class SearchPage extends Component {
           <ol className="books-grid">
             {queriedBooks.map((queriedBook) =>{
 
-              let i = books.findIndex(book => queriedBook.id === book.id);
+              const i = books.findIndex(book => queriedBook.id === book.id);
               if(i !== -1){
                 queriedBook.shelf = books[i].shelf
               }
